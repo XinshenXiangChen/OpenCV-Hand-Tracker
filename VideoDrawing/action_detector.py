@@ -33,11 +33,11 @@ def action_detector(landmarks, hand_label):
 
         if finger_name == "thumb" :
             # goofy ah code such that for the thumnb it compares the tip vs the mcp instead of the ip vs the mcp
-            if hand_label == "Left":
+            if hand_label == "Right":
                 if landmarks.landmark[landmark_id].x < landmarks.landmark[landmark_id - 2].x:
                     count = count + 1
                     fingers_up[finger_name] = True
-            else:
+            else:  # Right hand
                 if landmarks.landmark[landmark_id].x > landmarks.landmark[landmark_id - 2].x:
                     count = count + 1
                     fingers_up[finger_name] = True
@@ -47,14 +47,11 @@ def action_detector(landmarks, hand_label):
                 count = count + 1
                 fingers_up[finger_name] = True
 
-    print(count)
-
-    # For some reason the hand detection is reversed, left is detected as right and right is detected as left
+    # Right hand with only index finger up = PAINT action
     if hand_label == "Right":
         if count == 1 and fingers_up["index"] == True:
             action = RightHandAction.PAINT
 
-    print(action)
     return action
 
 

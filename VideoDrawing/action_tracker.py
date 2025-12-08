@@ -43,6 +43,8 @@ class HandDrawer(HandTracker):
         while True:
             success, frame = self.cap.read()
             if success:
+                # Flip frame horizontally to fix mirroring
+                frame = cv2.flip(frame, 1)
                 rec_hands = self.hand_tracker.process(frame)
 
                 if rec_hands.multi_hand_landmarks:

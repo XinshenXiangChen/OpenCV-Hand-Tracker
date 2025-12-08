@@ -49,8 +49,13 @@ def action_detector(landmarks, hand_label):
 
     # Right hand with only index finger up = PAINT action
     if hand_label == "Right":
-        if count == 1 and fingers_up["index"] == True:
-            action = RightHandAction.PAINT
+
+        if fingers_up["index"]:
+            return RightHandAction.PAINT
+
+        if count == 1:
+            if fingers_up["middle"]:
+                 action = RightHandAction.ERASE
 
     return action
 

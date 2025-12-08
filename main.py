@@ -1,6 +1,6 @@
 import sys
-from Base.hand_tracker import HandTracker
-from VideoDrawing.hand_tracker_drawer import HandDrawer
+from BaseHandTracker.hand_tracker import HandTracker
+from VideoDrawing.action_tracker import HandDrawer
 
 options = {
     "fuck67": HandTracker(),

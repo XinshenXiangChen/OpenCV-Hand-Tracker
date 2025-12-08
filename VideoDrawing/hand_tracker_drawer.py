@@ -1,6 +1,4 @@
-import cv2
-import mediapipe as mp
-from hand_tracker import HandTracker
+from Base.hand_tracker import HandTracker
 import matplotlib.pyplot as plt
 
 

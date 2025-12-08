@@ -1,9 +1,12 @@
 import cv2
 import mediapipe as mp
-from mediapipe.python.solutions.hands_connections import HAND_CONNECTIONS
-import pyautogui
-from action_detector import action_detector
+from VideoDrawing.action_detector import action_detector
 
+
+"""
+This is the base hand tracker 
+It has essentially nothing but the hand tracking 
+"""
 class HandTracker:
     def __init__(self):
         self.cap = (
@@ -12,7 +15,6 @@ class HandTracker:
         self.width, self.height = 3000, 2800
 
         self.hand_drawer = mp.solutions.drawing_utils
-
 
         self.hand_tracker = mp.solutions.hands.Hands()
 
@@ -42,12 +44,10 @@ class HandTracker:
                             rec_hands.multi_hand_landmarks, rec_hands.multi_handedness):
                         # handedness.classification[0].label is "Left" or "Right"
                         hand_label = handedness.classification[0].label
-
-                        action_detector(hand_landmarks, hand_label)
                         self.hand_drawer.draw_landmarks(frame, hand_landmarks, mp.solutions.hands.HAND_CONNECTIONS)
 
                 cv2.imshow("hand_tracker", frame)
-                if cv2.waitKey(2) == ord('q'):
+                if cv2.waitKey() == ord('q'):
                     break
 
 

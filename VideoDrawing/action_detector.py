@@ -38,6 +38,8 @@ def action_detector(landmarks, hand_label):
                 count = count + 1
                 fingers_up[finger_name] = True
 
+    print(count)
+
     if count == 1 and fingers_up["index"] == True:
         pass
 

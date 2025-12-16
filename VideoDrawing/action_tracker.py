@@ -27,14 +27,14 @@ class HandDrawer(HandTracker):
         Hand tracking window shows in the left
         """
         cv2.namedWindow("hand_tracker", cv2.WINDOW_NORMAL)
-        cv2.resizeWindow("hand_tracker", self.half_x_screen, self.half_y_screen)
+
 
 
         """
         Drawn canvas is shown in the right
         """
         cv2.namedWindow("canvas", cv2.WINDOW_NORMAL)
-        cv2.resizeWindow("canvas", self.half_x_screen, self.half_y_screen)
+
         cv2.moveWindow('canvas', int(self.screen_width/2), 0)
 
         self.canvas = np.ones((self.half_x_screen, self.half_y_screen, 3), dtype=np.uint8) * 255
